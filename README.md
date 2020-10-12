@@ -203,6 +203,7 @@ show_img(IDC)
 
 #### Arsitektur CNN
 
+As same like the title in project, we would use a model architecture CNN to predict IDC. The model we used is VGG16.
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.applications import vgg16
@@ -231,6 +232,7 @@ model.summary()
 ```
 ![model summary()](https://user-images.githubusercontent.com/72731175/95768044-e8ecb780-0cdf-11eb-9e75-ff5c68005842.jpeg)
 
+
 ####  Visualize Filters in CNN
 
 ```
@@ -250,8 +252,11 @@ for i in range(n_filters):
 
 plt.show()
 ```
+
 Plot of the First 6 Filters From CNN With One Subplot per Channel.
+
 ![First 6 Filters](https://user-images.githubusercontent.com/72731175/95768476-9b247f00-0ce0-11eb-9280-22cde1103a20.jpeg)
+
 
 ####  Visualize Feature Maps in CNN
 
@@ -285,6 +290,7 @@ for _ in range(square):
 plt.show()
 ```
 Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN.
+
 ![Feature Maps](https://user-images.githubusercontent.com/72731175/95768874-3584c280-0ce1-11eb-89da-c816bc0ec191.jpeg)
 
 
@@ -343,13 +349,13 @@ for i in range(9):
 plt.show()
 ```
 Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Horizontal Flip.
+
 ![image aug](https://user-images.githubusercontent.com/72731175/95769237-c360ad80-0ce1-11eb-924f-624d8e0da876.jpeg)
 
 Load extention tensorboard in jupyter notebook.
 ```
 %load_ext tensorboard
-``
-
+```
 ```
 %tensorboard --logdir logs
 ```
@@ -388,7 +394,6 @@ report = classification_report(y_test2_arr, prediction_result)
 report
 ```
 ![report](https://user-images.githubusercontent.com/72731175/95770203-41718400-0ce3-11eb-8b0a-5928262a9dc7.jpeg)
-
 
 ```
 import matplotlib.pyplot as plt
