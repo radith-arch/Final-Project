@@ -167,7 +167,7 @@ y_train2_arr_cat = to_categorical(y_train2_arr)
 y_test2_arr_cat = to_categorical(y_test2_arr)
 ```
 
-#### Images Visualization
+### Images Visualization
 
 Made a new function for pick random sample and show it using matplotlib.pyplot.
 ```
@@ -201,7 +201,7 @@ show_img(IDC)
 ```
 ![show_img(nonIDC)](https://user-images.githubusercontent.com/72731175/95767418-edfd3700-0cde-11eb-9bf4-974ac924aaea.jpeg)
 
-#### Arsitektur CNN
+### Arsitektur CNN
 
 As same like the title in project, we would use a model architecture CNN to predict IDC. The model we used is VGG16.
 ```
@@ -294,7 +294,7 @@ Visualization of the Feature Maps Extracted From the First Convolutional Layer i
 ![Feature Maps](https://user-images.githubusercontent.com/72731175/95768874-3584c280-0ce1-11eb-89da-c816bc0ec191.jpeg)
 
 
-#### Tensorboard
+### Tensorboard
 
 Using tf.keras.callbacks.ModelCheckpoint to save weight of the best validation accuracy. 
 ```
@@ -304,7 +304,7 @@ filepath = "weights-improvement-the-best.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 ```
-
+Made new variable as place to save logs from tf.keras.callbacks.ModelCheckpoint.
 ```
 from tensorflow.keras.callbacks import TensorBoard
 import os
@@ -313,23 +313,22 @@ import datetime
 logdir = os.path.join("logs", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 callbacks_list.append(TensorBoard(logdir, histogram_freq=1))
 ```
-
+To ensure that model could perform better, we could use image generator to mutiple data as to increase the probability.
 ```
 from keras.preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
 datagen = ImageDataGenerator(rescale=None)
 ```
-
+Use flow() to takes data & label arrays, generates batches of augmented data as x is a list of numpy arrays and y is a numpy array of corresponding labels.
 ```
 train_iterator = train_datagen.flow(x_train2, y_train2_arr_cat, batch_size=128)
 test_iterator = datagen.flow(x_test2, y_test2_arr_cat, batch_size=128)
 ```
-
+Fit the model using fit_generator as we have data augmentation needs to be applied and keep verbose=2, so we still could see the progress of training manually.
 ```
 model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list, verbose=2)
 ```
-
 
 #### Visualize Images Augmentation
 
@@ -353,7 +352,9 @@ Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Horizo
 
 ![image aug](https://user-images.githubusercontent.com/72731175/95769237-c360ad80-0ce1-11eb-924f-624d8e0da876.jpeg)
 
-Load extention tensorboard in jupyter notebook.
+
+#### Load extention tensorboard in jupyter notebook.
+
 ```
 %load_ext tensorboard
 ```
