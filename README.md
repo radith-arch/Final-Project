@@ -296,6 +296,7 @@ Visualization of the Feature Maps Extracted From the First Convolutional Layer i
 
 #### Tensorboard
 
+Using tf.keras.callbacks.ModelCheckpoint to save weight of the best validation accuracy. 
 ```
 from tensorflow.keras.callbacks import ModelCheckpoint
 
@@ -356,13 +357,16 @@ Load extention tensorboard in jupyter notebook.
 ```
 %load_ext tensorboard
 ```
+We could use feature tensorboard to visualize training process, so as it goes to training, we could see the progress of epoch to loss and accuracy.
 ```
 %tensorboard --logdir logs
 ```
 ![epoch acc](https://user-images.githubusercontent.com/72731175/95769680-74674800-0ce2-11eb-9b72-5b1e83a43b24.jpeg)
+
 ![epoch loss](https://user-images.githubusercontent.com/72731175/95769911-c8722c80-0ce2-11eb-8002-3b6bc7844305.jpeg)
 
-Prediction to Validation Data
+
+Prediction to validation data using the saved weight from last time. We could call it by code load_weights() and it's must noted that opt and loss must same as architecture CNN we used for training.
 ```
 model_filename = "weights-improvement-the-best.h5"
 
@@ -372,29 +376,22 @@ opt = SGD(lr=0.001, momentum = 0.9)
 model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
 ```
 
-```
-pred = model.predict(x_test2)
-```
-
+To evaluate the model which one is good or not. We could use confusion matrix and classification report. 
 ```
 from sklearn.metrics import confusion_matrix
 import numpy as np
 
+pred = model.predict(x_test2)
 prediction_result = np.argmax(pred, axis=1)
-```
-
-```
 confusion = confusion_matrix(y_test2_arr, prediction_result)
-```
 
-```
 from sklearn.metrics import classification_report
-
 report = classification_report(y_test2_arr, prediction_result)
 report
 ```
 ![report](https://user-images.githubusercontent.com/72731175/95770203-41718400-0ce3-11eb-8b0a-5928262a9dc7.jpeg)
 
+Confusion Matrix Visualization
 ```
 import matplotlib.pyplot as plt
 
@@ -409,8 +406,3 @@ plt.title('Confusion Matrix - Invasive Ductal Carcinoma (IDC)') #Harus di ubah j
 plt.show()
 ```
 ![confusion](https://user-images.githubusercontent.com/72731175/95770323-71208c00-0ce3-11eb-9795-0783fecbd2e2.jpeg)
-
-
-
-
-
