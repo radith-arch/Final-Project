@@ -536,7 +536,8 @@ test_iterator = datagen.flow(x_test2, y_test2_arr_cat, batch_size=128)
 ```
 Fit the model using fit_generator as we have data augmentation needs to be applied and keep verbose=2, so we still could see the progress of training manually.
 ```
-model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list, verbose=2)```
+model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list, verbose=2)
+```
 
 #### Visualisasi Tensorboard Epoch to Loss-Accuracy
 
