@@ -354,106 +354,6 @@ Fit the model using fit_generator as we have data augmentation needs to be appli
 ```
 vgg_model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list_vgg, verbose=2)
 ```
-> Epoch 1/25
-
-> Epoch 00001: val_accuracy improved from -inf to 0.75160, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 114s - loss: 0.5214 - accuracy: 0.7513 - val_loss: 0.5105 - val_accuracy: 0.7516
-> Epoch 2/25
-
-> Epoch 00002: val_accuracy improved from 0.75160 to 0.76650, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 113s - loss: 0.5048 - accuracy: 0.7648 - val_loss: 0.4983 - val_accuracy: 0.7665
-> Epoch 3/25
-
-> Epoch 00003: val_accuracy improved from 0.76650 to 0.76900, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 114s - loss: 0.4961 - accuracy: 0.7719 - val_loss: 0.4944 - val_accuracy: 0.7690
-> Epoch 4/25
-
-> Epoch 00004: val_accuracy improved from 0.76900 to 0.77060, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 115s - loss: 0.4916 - accuracy: 0.7749 - val_loss: 0.4914 - val_accuracy: 0.7706
-> Epoch 5/25
-
-> Epoch 00005: val_accuracy improved from 0.77060 to 0.77315, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 114s - loss: 0.4872 - accuracy: 0.7783 - val_loss: 0.4894 - val_accuracy: 0.7732
-> Epoch 6/25
-
-> Epoch 00006: val_accuracy improved from 0.77315 to 0.77540, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 113s - loss: 0.4854 - accuracy: 0.7797 - val_loss: 0.4835 - val_accuracy: 0.7754
-> Epoch 7/25
-
-> Epoch 00007: val_accuracy improved from 0.77540 to 0.77710, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 114s - loss: 0.4810 - accuracy: 0.7811 - val_loss: 0.4820 - val_accuracy: 0.7771
-> Epoch 8/25
-
-> Epoch 00008: val_accuracy did not improve from 0.77710
-> 704/704 - 115s - loss: 0.4786 - accuracy: 0.7839 - val_loss: 0.4810 - val_accuracy: 0.7753
-> Epoch 9/25
-
-> Epoch 00009: val_accuracy did not improve from 0.77710
-> 704/704 - 115s - loss: 0.4770 - accuracy: 0.7836 - val_loss: 0.4798 - val_accuracy: 0.7757
-> Epoch 10/25
-
-> Epoch 00010: val_accuracy improved from 0.77710 to 0.78140, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 113s - loss: 0.4757 - accuracy: 0.7842 - val_loss: 0.4750 - val_accuracy: 0.7814
-> Epoch 11/25
-
-> Epoch 00011: val_accuracy did not improve from 0.78140
-> 704/704 - 113s - loss: 0.4730 - accuracy: 0.7870 - val_loss: 0.4745 - val_accuracy: 0.7802
-> Epoch 12/25
-
-> Epoch 00012: val_accuracy improved from 0.78140 to 0.78345, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 114s - loss: 0.4719 - accuracy: 0.7876 - val_loss: 0.4723 - val_accuracy: 0.7835
-> Epoch 13/25
-
-> Epoch 00013: val_accuracy did not improve from 0.78345
-> 704/704 - 112s - loss: 0.4697 - accuracy: 0.7883 - val_loss: 0.4746 - val_accuracy: 0.7818
-> Epoch 14/25
-
-> Epoch 00014: val_accuracy did not improve from 0.78345
-> 704/704 - 111s - loss: 0.4682 - accuracy: 0.7886 - val_loss: 0.4726 - val_accuracy: 0.7821
-> Epoch 15/25
-
-> Epoch 00015: val_accuracy did not improve from 0.78345
-> 704/704 - 111s - loss: 0.4670 - accuracy: 0.7898 - val_loss: 0.4710 - val_accuracy: 0.7809
-> Epoch 16/25
-
-> Epoch 00016: val_accuracy improved from 0.78345 to 0.78420, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 114s - loss: 0.4654 - accuracy: 0.7906 - val_loss: 0.4680 - val_accuracy: 0.7842
-> Epoch 17/25
-
-> Epoch 00017: val_accuracy did not improve from 0.78420
-> 704/704 - 114s - loss: 0.4672 - accuracy: 0.7898 - val_loss: 0.4697 - val_accuracy: 0.7825
-> Epoch 18/25
-
-> Epoch 00018: val_accuracy improved from 0.78420 to 0.78655, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 113s - loss: 0.4645 - accuracy: 0.7916 - val_loss: 0.4669 - val_accuracy: 0.7865
-> Epoch 19/25
-
-> Epoch 00019: val_accuracy improved from 0.78655 to 0.78720, saving model to vgg-model-weights-improvement-the-best.h5
-> 704/704 - 113s - loss: 0.4626 - accuracy: 0.7932 - val_loss: 0.4644 - val_accuracy: 0.7872
-> Epoch 20/25
-
-> Epoch 00020: val_accuracy did not improve from 0.78720
-> 704/704 - 113s - loss: 0.4633 - accuracy: 0.7910 - val_loss: 0.4658 - val_accuracy: 0.7850
-> Epoch 21/25
-
-> Epoch 00021: val_accuracy did not improve from 0.78720
-> 704/704 - 113s - loss: 0.4613 - accuracy: 0.7931 - val_loss: 0.4675 - val_accuracy: 0.7846
-> Epoch 22/25
-
-> Epoch 00022: val_accuracy did not improve from 0.78720
-> 704/704 - 112s - loss: 0.4599 - accuracy: 0.7932 - val_loss: 0.4656 - val_accuracy: 0.7860
-> Epoch 23/25
-
-> Epoch 00023: val_accuracy did not improve from 0.78720
-> 704/704 - 114s - loss: 0.4609 - accuracy: 0.7933 - val_loss: 0.4635 - val_accuracy: 0.7854
-> Epoch 24/25
-
-> Epoch 00024: val_accuracy did not improve from 0.78720
-> 704/704 - 114s - loss: 0.4606 - accuracy: 0.7926 - val_loss: 0.4645 - val_accuracy: 0.7865
-> Epoch 25/25
-
-> Epoch 00025: val_accuracy did not improve from 0.78720
-> 704/704 - 114s - loss: 0.4587 - accuracy: 0.7951 - val_loss: 0.4642 - val_accuracy: 0.7850
 
 ```
 Epoch 1/25
@@ -556,6 +456,7 @@ Epoch 25/25
 
 Epoch 00025: val_accuracy did not improve from 0.78720
 704/704 - 114s - loss: 0.4587 - accuracy: 0.7951 - val_loss: 0.4642 - val_accuracy: 0.7850
+<tensorflow.python.keras.callbacks.History at 0x7f702315b2e8>
 ```
 
 #### Visualize Images Augmentation
@@ -774,108 +675,110 @@ Fit the model using fit_generator as we have data augmentation needs to be appli
 ```
 model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list, verbose=2)
 ```
-> Epoch 1/25
-> WARNING:tensorflow:Callbacks method `on_train_batch_end` is slow compared to the batch time (batch time: 0.0264s vs `on_train_batch_end` time: 0.1117s). Check your callbacks.
 
-> Epoch 00001: val_accuracy improved from -inf to 0.81535, saving model to weights-improvement-the-best.h5
-> 704/704 - 89s - loss: 0.5220 - accuracy: 0.7516 - val_loss: 0.4236 - val_accuracy: 0.8153
-> Epoch 2/25
+```
+Epoch 1/25
+WARNING:tensorflow:Callbacks method `on_train_batch_end` is slow compared to the batch time (batch time: 0.0264s vs `on_train_batch_end` time: 0.1117s). Check your callbacks.
 
-> Epoch 00002: val_accuracy improved from 0.81535 to 0.81600, saving model to weights-improvement-the-best.h5
-> 704/704 - 87s - loss: 0.4530 - accuracy: 0.7988 - val_loss: 0.4210 - val_accuracy: 0.8160
-> Epoch 3/25
+Epoch 00001: val_accuracy improved from -inf to 0.81535, saving model to weights-improvement-the-best.h5
+704/704 - 89s - loss: 0.5220 - accuracy: 0.7516 - val_loss: 0.4236 - val_accuracy: 0.8153
+Epoch 2/25
 
-> Epoch 00003: val_accuracy improved from 0.81600 to 0.83130, saving model to weights-improvement-the-best.h5
-> 704/704 - 87s - loss: 0.4425 - accuracy: 0.8050 - val_loss: 0.3995 - val_accuracy: 0.8313
-> Epoch 4/25
+Epoch 00002: val_accuracy improved from 0.81535 to 0.81600, saving model to weights-improvement-the-best.h5
+704/704 - 87s - loss: 0.4530 - accuracy: 0.7988 - val_loss: 0.4210 - val_accuracy: 0.8160
+Epoch 3/25
 
-> Epoch 00004: val_accuracy did not improve from 0.83130
-> 704/704 - 87s - loss: 0.4295 - accuracy: 0.8109 - val_loss: 0.4194 - val_accuracy: 0.8183
-> Epoch 5/25
+Epoch 00003: val_accuracy improved from 0.81600 to 0.83130, saving model to weights-improvement-the-best.h5
+704/704 - 87s - loss: 0.4425 - accuracy: 0.8050 - val_loss: 0.3995 - val_accuracy: 0.8313
+Epoch 4/25
 
-> Epoch 00005: val_accuracy improved from 0.83130 to 0.83755, saving model to weights-improvement-the-best.h5
-> 704/704 - 90s - loss: 0.4203 - accuracy: 0.8158 - val_loss: 0.3855 - val_accuracy: 0.8375
-> Epoch 6/25
+Epoch 00004: val_accuracy did not improve from 0.83130
+704/704 - 87s - loss: 0.4295 - accuracy: 0.8109 - val_loss: 0.4194 - val_accuracy: 0.8183
+Epoch 5/25
 
-> Epoch 00006: val_accuracy did not improve from 0.83755
-> 704/704 - 89s - loss: 0.4151 - accuracy: 0.8196 - val_loss: 0.3950 - val_accuracy: 0.8332
-> Epoch 7/25
+Epoch 00005: val_accuracy improved from 0.83130 to 0.83755, saving model to weights-improvement-the-best.h5
+704/704 - 90s - loss: 0.4203 - accuracy: 0.8158 - val_loss: 0.3855 - val_accuracy: 0.8375
+Epoch 6/25
 
-> Epoch 00007: val_accuracy improved from 0.83755 to 0.83985, saving model to weights-improvement-the-best.h5
-> 704/704 - 89s - loss: 0.4077 - accuracy: 0.8224 - val_loss: 0.3772 - val_accuracy: 0.8399
-> Epoch 8/25
+Epoch 00006: val_accuracy did not improve from 0.83755
+704/704 - 89s - loss: 0.4151 - accuracy: 0.8196 - val_loss: 0.3950 - val_accuracy: 0.8332
+Epoch 7/25
 
-> Epoch 00008: val_accuracy improved from 0.83985 to 0.84455, saving model to weights-improvement-the-best.h5
-> 704/704 - 91s - loss: 0.4015 - accuracy: 0.8258 - val_loss: 0.3756 - val_accuracy: 0.8446
-> Epoch 9/25
+Epoch 00007: val_accuracy improved from 0.83755 to 0.83985, saving model to weights-improvement-the-best.h5
+704/704 - 89s - loss: 0.4077 - accuracy: 0.8224 - val_loss: 0.3772 - val_accuracy: 0.8399
+Epoch 8/25
 
-> Epoch 00009: val_accuracy did not improve from 0.84455
-> 704/704 - 93s - loss: 0.3925 - accuracy: 0.8329 - val_loss: 0.3727 - val_accuracy: 0.8429
-> Epoch 10/25
+Epoch 00008: val_accuracy improved from 0.83985 to 0.84455, saving model to weights-improvement-the-best.h5
+704/704 - 91s - loss: 0.4015 - accuracy: 0.8258 - val_loss: 0.3756 - val_accuracy: 0.8446
+Epoch 9/25
 
-> Epoch 00010: val_accuracy did not improve from 0.84455
-> 704/704 - 92s - loss: 0.3876 - accuracy: 0.8345 - val_loss: 0.4110 - val_accuracy: 0.8261
-> Epoch 11/25
+Epoch 00009: val_accuracy did not improve from 0.84455
+704/704 - 93s - loss: 0.3925 - accuracy: 0.8329 - val_loss: 0.3727 - val_accuracy: 0.8429
+Epoch 10/25
 
-> Epoch 00011: val_accuracy did not improve from 0.84455
-> 704/704 - 89s - loss: 0.3838 - accuracy: 0.8364 - val_loss: 0.3760 - val_accuracy: 0.8432
-> Epoch 12/25
+Epoch 00010: val_accuracy did not improve from 0.84455
+704/704 - 92s - loss: 0.3876 - accuracy: 0.8345 - val_loss: 0.4110 - val_accuracy: 0.8261
+Epoch 11/25
 
-> Epoch 00012: val_accuracy did not improve from 0.84455
-> 704/704 - 89s - loss: 0.3767 - accuracy: 0.8397 - val_loss: 0.3847 - val_accuracy: 0.8394
-> Epoch 13/25
+Epoch 00011: val_accuracy did not improve from 0.84455
+704/704 - 89s - loss: 0.3838 - accuracy: 0.8364 - val_loss: 0.3760 - val_accuracy: 0.8432
+Epoch 12/25
 
-> Epoch 00013: val_accuracy did not improve from 0.84455
-> 704/704 - 89s - loss: 0.3717 - accuracy: 0.8415 - val_loss: 0.3729 - val_accuracy: 0.8425
-> Epoch 14/25
+Epoch 00012: val_accuracy did not improve from 0.84455
+704/704 - 89s - loss: 0.3767 - accuracy: 0.8397 - val_loss: 0.3847 - val_accuracy: 0.8394
+Epoch 13/25
 
-> Epoch 00014: val_accuracy improved from 0.84455 to 0.84865, saving model to weights-improvement-the-best.h5
-> 704/704 - 89s - loss: 0.3707 - accuracy: 0.8435 - val_loss: 0.3562 - val_accuracy: 0.8486
-> Epoch 15/25
+Epoch 00013: val_accuracy did not improve from 0.84455
+704/704 - 89s - loss: 0.3717 - accuracy: 0.8415 - val_loss: 0.3729 - val_accuracy: 0.8425
+Epoch 14/25
 
-> Epoch 00015: val_accuracy improved from 0.84865 to 0.85405, saving model to weights-improvement-the-best.h5
-> 704/704 - 88s - loss: 0.3627 - accuracy: 0.8471 - val_loss: 0.3599 - val_accuracy: 0.8540
-> Epoch 16/25
+Epoch 00014: val_accuracy improved from 0.84455 to 0.84865, saving model to weights-improvement-the-best.h5
+704/704 - 89s - loss: 0.3707 - accuracy: 0.8435 - val_loss: 0.3562 - val_accuracy: 0.8486
+Epoch 15/25
 
-> Epoch 00016: val_accuracy did not improve from 0.85405
-> 704/704 - 88s - loss: 0.3590 - accuracy: 0.8489 - val_loss: 0.3626 - val_accuracy: 0.8493
-> Epoch 17/25
+Epoch 00015: val_accuracy improved from 0.84865 to 0.85405, saving model to weights-improvement-the-best.h5
+704/704 - 88s - loss: 0.3627 - accuracy: 0.8471 - val_loss: 0.3599 - val_accuracy: 0.8540
+Epoch 16/25
 
-> Epoch 00017: val_accuracy did not improve from 0.85405
-> 704/704 - 90s - loss: 0.3593 - accuracy: 0.8494 - val_loss: 0.3601 - val_accuracy: 0.8521
-> Epoch 18/25
+Epoch 00016: val_accuracy did not improve from 0.85405
+704/704 - 88s - loss: 0.3590 - accuracy: 0.8489 - val_loss: 0.3626 - val_accuracy: 0.8493
+Epoch 17/25
 
-> Epoch 00018: val_accuracy improved from 0.85405 to 0.85950, saving model to weights-improvement-the-best.h5
-> 704/704 - 89s - loss: 0.3547 - accuracy: 0.8505 - val_loss: 0.3443 - val_accuracy: 0.8595
-> Epoch 19/25
+Epoch 00017: val_accuracy did not improve from 0.85405
+704/704 - 90s - loss: 0.3593 - accuracy: 0.8494 - val_loss: 0.3601 - val_accuracy: 0.8521
+Epoch 18/25
 
-> Epoch 00019: val_accuracy did not improve from 0.85950
-> 704/704 - 88s - loss: 0.3543 - accuracy: 0.8512 - val_loss: 0.3498 - val_accuracy: 0.8573
-> Epoch 20/25
+Epoch 00018: val_accuracy improved from 0.85405 to 0.85950, saving model to weights-improvement-the-best.h5
+704/704 - 89s - loss: 0.3547 - accuracy: 0.8505 - val_loss: 0.3443 - val_accuracy: 0.8595
+Epoch 19/25
 
-> Epoch 00020: val_accuracy improved from 0.85950 to 0.86200, saving model to weights-improvement-the-best.h5
-> 704/704 - 88s - loss: 0.3508 - accuracy: 0.8529 - val_loss: 0.3303 - val_accuracy: 0.8620
-> Epoch 21/25
+Epoch 00019: val_accuracy did not improve from 0.85950
+704/704 - 88s - loss: 0.3543 - accuracy: 0.8512 - val_loss: 0.3498 - val_accuracy: 0.8573
+Epoch 20/25
 
-> Epoch 00021: val_accuracy did not improve from 0.86200
-> 704/704 - 88s - loss: 0.3475 - accuracy: 0.8542 - val_loss: 0.3348 - val_accuracy: 0.8613
-> Epoch 22/25
+Epoch 00020: val_accuracy improved from 0.85950 to 0.86200, saving model to weights-improvement-the-best.h5
+704/704 - 88s - loss: 0.3508 - accuracy: 0.8529 - val_loss: 0.3303 - val_accuracy: 0.8620
+Epoch 21/25
 
-> Epoch 00022: val_accuracy did not improve from 0.86200
-> 704/704 - 87s - loss: 0.3436 - accuracy: 0.8552 - val_loss: 0.3571 - val_accuracy: 0.8519
-> Epoch 23/25
+Epoch 00021: val_accuracy did not improve from 0.86200
+704/704 - 88s - loss: 0.3475 - accuracy: 0.8542 - val_loss: 0.3348 - val_accuracy: 0.8613
+Epoch 22/25
 
-> Epoch 00023: val_accuracy improved from 0.86200 to 0.86345, saving model to weights-improvement-the-best.h5
-> 704/704 - 88s - loss: 0.3440 - accuracy: 0.8553 - val_loss: 0.3289 - val_accuracy: 0.8634
-> Epoch 24/25
+Epoch 00022: val_accuracy did not improve from 0.86200
+704/704 - 87s - loss: 0.3436 - accuracy: 0.8552 - val_loss: 0.3571 - val_accuracy: 0.8519
+Epoch 23/25
 
-> Epoch 00024: val_accuracy did not improve from 0.86345
-> 704/704 - 91s - loss: 0.3421 - accuracy: 0.8569 - val_loss: 0.3313 - val_accuracy: 0.8623
-> Epoch 25/25
+Epoch 00023: val_accuracy improved from 0.86200 to 0.86345, saving model to weights-improvement-the-best.h5
+704/704 - 88s - loss: 0.3440 - accuracy: 0.8553 - val_loss: 0.3289 - val_accuracy: 0.8634
+Epoch 24/25
 
-> Epoch 00025: val_accuracy did not improve from 0.86345
-> 704/704 - 93s - loss: 0.3399 - accuracy: 0.8570 - val_loss: 0.3424 - val_accuracy: 0.8589
+Epoch 00024: val_accuracy did not improve from 0.86345
+704/704 - 91s - loss: 0.3421 - accuracy: 0.8569 - val_loss: 0.3313 - val_accuracy: 0.8623
+Epoch 25/25
 
+Epoch 00025: val_accuracy did not improve from 0.86345
+704/704 - 93s - loss: 0.3399 - accuracy: 0.8570 - val_loss: 0.3424 - val_accuracy: 0.8589
+```
 
 #### Visualisasi Tensorboard Epoch to Loss-Accuracy
 
