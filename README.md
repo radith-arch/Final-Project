@@ -23,7 +23,7 @@
 		- [Visualize Feature Maps](#visualize-feature-maps)
 		- [Tensorboard Sequential 5 Layers Conv2D](#tensorboard-sequential-5-layers-conv2d)
 		- [Visualisasi Tensorboard Epoch to Loss-Accuracy](#visualisasi-tensorboard-epoch-to-loss-accuracy)
--[Conclusion](#conclusion)
+- [Conclusion](#conclusion)
 
 ### Description of Dataset
 #### Context
