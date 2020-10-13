@@ -1,5 +1,29 @@
 ## Final Project - Using Architecture Vgg16 (Acc 0.79) Vs 5 Layers Conv2D (Acc 0.86) to Predict Invasive Ductal Carcinoma (IDC)
 
+### Table of Contents
+- [Description of Dataset](#description-of-dataset)
+	- Context
+	- Content
+	- Acknowledgements
+	- Inspiration
+- Preparation Dataset
+	- Load Data
+	- Split Train-Test Data
+	- Feature Engineering
+- Images Visualization
+- Architecture Convolutional Neural Network (CNN)
+	- VGG16
+		- Visualize Filters in VGG16
+		- Visualize Feature Maps
+		- Tensorboard VGG16
+		- Visualize Images Augmentation
+		- Visualisasi Tensorboard Epoch to Loss-Accuracy
+	- Sequential 5 Layers Conv2D
+		- Visualize Filters in Sequential 5 Layers Conv2D
+		- Visualize Feature Maps
+		- Tensorboard Sequential 5 Layers Conv2D
+		- Visualisasi Tensorboard Epoch to Loss-Accuracy
+
 ### Description of Dataset
 #### Context
 Invasive Ductal Carcinoma (IDC) is the most common subtype of all breast cancers. To assign an aggressiveness grade to a whole mount sample, pathologists typically focus on the regions which contain the IDC. As a result, one of the common pre-processing steps for automatic aggressiveness grading is to delineate the exact regions of IDC inside of a whole mount slide.
