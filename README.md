@@ -11,7 +11,7 @@
 	- [Split Train-Test Data](split-train-test-data)
 	- [Feature Engineering](#feature-engineering)
 - [Images Visualization](#images-visualization)
-- [Architecture Convolutional Neural Network (CNN)](#architecture-convolutional-neural-network-cnn-)
+- [Architecture Convolutional Neural Network (CNN)](#architecture-convolutional-neural-network-cnn)
 	- [VGG16](#vgg16)
 		- [Visualize Filters in VGG16](#visualize-filters-in-vgg16)
 		- [Visualize Feature Maps](#visualize-feature-maps)
