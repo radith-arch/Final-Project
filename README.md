@@ -2,27 +2,27 @@
 
 ### Table of Contents
 - [Description of Dataset](#description-of-dataset)
-	- Context
-	- Content
-	- Acknowledgements
-	- Inspiration
-- Preparation Dataset
-	- Load Data
-	- Split Train-Test Data
-	- Feature Engineering
-- Images Visualization
-- Architecture Convolutional Neural Network (CNN)
-	- VGG16
-		- Visualize Filters in VGG16
-		- Visualize Feature Maps
-		- Tensorboard VGG16
-		- Visualize Images Augmentation
-		- Visualisasi Tensorboard Epoch to Loss-Accuracy
-	- Sequential 5 Layers Conv2D
-		- Visualize Filters in Sequential 5 Layers Conv2D
-		- Visualize Feature Maps
-		- Tensorboard Sequential 5 Layers Conv2D
-		- Visualisasi Tensorboard Epoch to Loss-Accuracy
+	- [Context](#context)
+	- [Content](#content)
+	- [Acknowledgements](#acknowledgements)
+	- [Inspiration](#inspiration)
+- [Preparation Dataset](#preparation-dataset)
+	- [Load Data](#load-data)
+	- [Split Train-Test Data](split-train-test-data)
+	- [Feature Engineering](#feature-engineering)
+- [Images Visualization](#images-visualization)
+- [Architecture Convolutional Neural Network (CNN)](#architecture-convolutional-neural-network-(cnn))
+	- [VGG16](#vgg16)
+		- [Visualize Filters in VGG16](#visualize-filters-in-vgg16)
+		- [Visualize Feature Maps](#visualize-feature-maps)
+		- [Tensorboard VGG16](#tensorboard-vgg16)
+		- [Visualize Images Augmentation](#visualize-images-augmentation)
+		- [Visualisasi Tensorboard Epoch to Loss-Accuracy](#visualisasi-tensorboard-epoch-to-loss-accuracy)
+	- [Sequential 5 Layers Conv2D](#sequential-5-layers-conv2d)
+		- [Visualize Filters in Sequential 5 Layers Conv2D](#visualize-filters-in-sequential-5-layers-conv2d)
+		- [Visualize Feature Maps](#visualize-feature-maps)
+		- [Tensorboard Sequential 5 Layers Conv2D](#tensorboard-sequential-5-layers-conv2d)
+		- [Visualisasi Tensorboard Epoch to Loss-Accuracy](#visualisasi-tensorboard-epoch-to-loss-accuracy)
 
 ### Description of Dataset
 #### Context
