@@ -23,6 +23,7 @@
 		- [Visualize Feature Maps](#visualize-feature-maps)
 		- [Tensorboard Sequential 5 Layers Conv2D](#tensorboard-sequential-5-layers-conv2d)
 		- [Visualisasi Tensorboard Epoch to Loss-Accuracy](#visualisasi-tensorboard-epoch-to-loss-accuracy)
+-[Conclusion](#conclusion)
 
 ### Description of Dataset
 #### Context
@@ -835,3 +836,10 @@ plt.title('Confusion Matrix')
 plt.show()
 ```
 ![model confusion](https://user-images.githubusercontent.com/72731175/95826134-137c5600-0d5c-11eb-9cf6-a6dcc9d0b9e7.jpeg)
+
+
+### Conclusion
+
+From this project, several things can be displayed including:
+- The Invasive Ductal Carcinoma dataset has an unbalanced number of IDC (-) & IDC (+) data, so it is necessary to generalize the data for further processing.
+- The use of VGG16 in this dataset is not as good as the deep layer model because VGG16 is built with a large library data so that the learning process is not as good as the one from scratch.
