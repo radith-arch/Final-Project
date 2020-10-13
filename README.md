@@ -256,6 +256,7 @@ vgg_model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accu
 
 vgg_model.summary()
 ```
+![vgg_model summary()](https://user-images.githubusercontent.com/72731175/95825256-c8157800-0d5a-11eb-9bb4-3319ae678eb2.jpeg)
 
 
 ####  Visualize Filters in VGG16
@@ -276,9 +277,9 @@ for i in range(n_filters):
 
 plt.show()
 ```
+Plot of the First 6 Filters From CNN VGG16 With One Subplot per Channel.
 
-Plot of the First 6 Filters From CNN With One Subplot per Channel.
-
+![vgg_filter](https://user-images.githubusercontent.com/72731175/95825286-d2377680-0d5a-11eb-9a0e-c1500fb12ad8.jpeg)
 
 
 ####  Visualize Feature Maps 
@@ -312,8 +313,9 @@ for _ in range(square):
 
 plt.show()
 ```
-Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN.
+Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN VGG16.
 
+![vgg feature maps](https://user-images.githubusercontent.com/72731175/95825410-00b55180-0d5b-11eb-9e92-2c657f8e504a.jpeg)
 
 
 
@@ -333,14 +335,14 @@ from tensorflow.keras.callbacks import TensorBoard
 import os
 import datetime
 
-vgg_logdir = os.path.join("logs-vgg-model", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
-callbacks_list_vgg.append(TensorBoard(vgg_logdir, histogram_freq=1))
+logdir = os.path.join("logs-vgg-model", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+callbacks_list_vgg.append(TensorBoard(logdir, histogram_freq=1))
 ```
 To ensure that model could perform better, we could use image generator to mutiple data as to increase the probability.
 ```
 from keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
+train_datagen = ImageDataGenerator(height_shift_range=0.2, width_shift_range=0.2, zoom_range=0.2, shear_range=0.2)
 datagen = ImageDataGenerator(rescale=None)
 ```
 Use flow() to takes data & label arrays, generates batches of augmented data as x is a list of numpy arrays and y is a numpy array of corresponding labels.
@@ -474,8 +476,9 @@ for i in range(9):
 
 plt.show()
 ```
-Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Horizontal Flip.
+Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Zoom Range and Shear Range.
 
+![image_aug](https://user-images.githubusercontent.com/72731175/95825454-132f8b00-0d5b-11eb-8604-fe723f517675.jpeg)
 
 
 
@@ -486,10 +489,11 @@ Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Horizo
 ```
 We could use feature tensorboard to visualize training process, so as it goes to training, we could see the progress of epoch to loss and accuracy.
 ```
-%tensorboard --vgg_logdir logs-vgg-model
+%tensorboard --logdir logs-vgg-model
 ```
+![vgg loss](https://user-images.githubusercontent.com/72731175/95825639-61dd2500-0d5b-11eb-94cd-44e10f8a3b8e.jpeg)
 
-
+![vgg acc](https://user-images.githubusercontent.com/72731175/95825679-74575e80-0d5b-11eb-8ae9-d9b5f4e01d3c.jpeg)
 
 
 
@@ -516,6 +520,7 @@ from sklearn.metrics import classification_report
 report = classification_report(y_test2_arr, prediction_result)
 report
 ```
+![vgg report](https://user-images.githubusercontent.com/72731175/95825722-82a57a80-0d5b-11eb-9ed5-7f58fbdd044b.jpeg)
 
 
 Confusion Matrix Visualization
@@ -532,6 +537,8 @@ ax.xaxis.set_ticks_position('top')
 plt.title('Confusion Matrix') 
 plt.show()
 ```
+![vgg confusion](https://user-images.githubusercontent.com/72731175/95825752-8b964c00-0d5b-11eb-94c0-868335ad3bea.jpeg)
+
 
 #### Sequential 5 Layers Conv2D
 ```
@@ -568,6 +575,7 @@ model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy
 
 model.summary()
 ```
+![model summary()](https://user-images.githubusercontent.com/72731175/95825770-95b84a80-0d5b-11eb-98df-e8a332516c60.jpeg)
 
 
 ####  Visualize Filters in Sequential 5 Layers Conv2D
@@ -589,8 +597,9 @@ for i in range(n_filters):
 plt.show()
 ```
 
-Plot of the First 6 Filters From CNN With One Subplot per Channel.
+Plot of the First 6 Filters From CNN Sequential 5 Layers Conv2D With One Subplot per Channel.
 
+![model filter](https://user-images.githubusercontent.com/72731175/95825800-9e108580-0d5b-11eb-9fcb-d12cfb876dc8.jpeg)
 
 
 ####  Visualize Feature Maps 
@@ -623,9 +632,9 @@ for _ in range(square):
 		ix += 1
 plt.show()
 ```
-Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN.
+Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN Sequential 5 Layers Conv2D.
 
-
+![model feature maps](https://user-images.githubusercontent.com/72731175/95825867-b7193680-0d5b-11eb-988d-884a35abfb87.jpeg)
 
 
 #### Tensorboard Sequential 5 Layers Conv2D
@@ -651,7 +660,7 @@ To ensure that model could perform better, we could use image generator to mutip
 ```
 from keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
+train_datagen = ImageDataGenerator(height_shift_range=0.2, width_shift_range=0.2, zoom_range=0.2, shear_range=0.2)
 datagen = ImageDataGenerator(rescale=None)
 ```
 Use flow() to takes data & label arrays, generates batches of augmented data as x is a list of numpy arrays and y is a numpy array of corresponding labels.
@@ -775,9 +784,9 @@ We could use feature tensorboard to visualize training process, so as it goes to
 ```
 %tensorboard  --logdir logs-deep-model
 ```
+![model acc](https://user-images.githubusercontent.com/72731175/95826060-f9427800-0d5b-11eb-803c-4be11255a6b8.jpeg)
 
-
-
+![model loss](https://user-images.githubusercontent.com/72731175/95826086-02334980-0d5c-11eb-8905-90633b8156d6.jpeg)
 
 
 Prediction to validation data using the saved weight from last time. We could call it by code load_weights() and it's must noted that opt and loss must same as architecture CNN we used for training.
@@ -803,6 +812,7 @@ from sklearn.metrics import classification_report
 report = classification_report(y_test2_arr, prediction_result)
 report
 ```
+![model report](https://user-images.githubusercontent.com/72731175/95826113-0bbcb180-0d5c-11eb-86d0-ea8802e1f79d.jpeg)
 
 
 Confusion Matrix Visualization
@@ -819,5 +829,4 @@ ax.xaxis.set_ticks_position('top')
 plt.title('Confusion Matrix') 
 plt.show()
 ```
-
-
+![model confusion](https://user-images.githubusercontent.com/72731175/95826134-137c5600-0d5c-11eb-9cf6-a6dcc9d0b9e7.jpeg)
