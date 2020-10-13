@@ -1,4 +1,4 @@
-## Final Project - Using Deep Learning to Predict Invasive Ductal Carcinoma (IDC)
+## Final Project - Using Architecture Vgg16 (Acc 0.79) Vs 5 Layers Conv2D (Acc 0.86) to Predict Invasive Ductal Carcinoma (IDC)
 
 ### Description of Dataset
 #### Context
@@ -201,13 +201,15 @@ show_img(IDC)
 ```
 ![show_img(nonIDC)](https://user-images.githubusercontent.com/72731175/95767418-edfd3700-0cde-11eb-9bf4-974ac924aaea.jpeg)
 
-### Arsitektur CNN
+### Architecture Convolutional Neural Network (CNN)
 
-As same like the title in project, we would use a model architecture CNN to predict IDC. The model we used is VGG16.
+As same like the title in project, we would use two models architecture CNN to predict IDC so we could see what the difference between two architectures. The first model we used is VGG16.
+
+#### VGG16
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.applications import vgg16
-from tensorflow.keras.layers import Dropout, Conv2D, Dense, Flatten
+from tensorflow.keras.layers import Dropout, Conv2D, MaxPooling2D, Dense, Flatten
 from tensorflow.keras.optimizers import SGD
 
 vgg_conv = vgg16.VGG16(weights='imagenet', include_top=False, input_shape=(50, 50, 3))
@@ -215,31 +217,29 @@ vgg_conv = vgg16.VGG16(weights='imagenet', include_top=False, input_shape=(50, 5
 for layer in vgg_conv.layers[:]:
   layer.trainable = False
 
-model = Sequential()
+vgg_model = Sequential()
 
-model.add(vgg_conv)
+vgg_model.add(vgg_conv)
 
-model.add(Flatten())
-model.add(Dense(1024, activation='relu', kernel_initializer='he_uniform'))
-model.add(Dropout(0.5))
-model.add(Dense(2, activation='softmax'))
+vgg_model.add(Flatten())
+vgg_model.add(Dense(1024, activation='relu', kernel_initializer='he_uniform'))
+vgg_model.add(Dropout(0.5))
+vgg_model.add(Dense(2, activation='softmax'))
 
 opt = SGD(lr=0.001, momentum = 0.9)
 
-model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+vgg_model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
 
-model.summary()
+vgg_model.summary()
 ```
-![model summary()](https://user-images.githubusercontent.com/72731175/95768044-e8ecb780-0cdf-11eb-9e75-ff5c68005842.jpeg)
 
 
-####  Visualize Filters in CNN
+####  Visualize Filters in VGG16
 
 ```
 filters, biases = vgg_conv.layers[1].get_weights()
 f_min, f_max = filters.min(), filters.max()
 filters = (filters - f_min) / (f_max - f_min)
-
 n_filters, ix = 6, 1
 for i in range(n_filters):
 	f = filters[:, :, :, i]
@@ -255,10 +255,9 @@ plt.show()
 
 Plot of the First 6 Filters From CNN With One Subplot per Channel.
 
-![First 6 Filters](https://user-images.githubusercontent.com/72731175/95768476-9b247f00-0ce0-11eb-9280-22cde1103a20.jpeg)
 
 
-####  Visualize Feature Maps in CNN
+####  Visualize Feature Maps 
 
 ```
 from keras.applications.vgg16 import preprocess_input
@@ -291,10 +290,220 @@ plt.show()
 ```
 Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN.
 
-![Feature Maps](https://user-images.githubusercontent.com/72731175/95768874-3584c280-0ce1-11eb-89da-c816bc0ec191.jpeg)
 
 
-### Tensorboard
+
+#### Tensorboard VGG16
+
+Using tf.keras.callbacks.ModelCheckpoint to save weight of the best validation accuracy. 
+```
+from tensorflow.keras.callbacks import ModelCheckpoint
+
+filepath = "vgg-model-weights-improvement-the-best.h5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
+callbacks_list_vgg = [checkpoint]
+```
+Made new variable as place to save logs from tf.keras.callbacks.ModelCheckpoint.
+```
+from tensorflow.keras.callbacks import TensorBoard
+import os
+import datetime
+
+vgg_logdir = os.path.join("logs-vgg-model", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+callbacks_list_vgg.append(TensorBoard(vgg_logdir, histogram_freq=1))
+```
+To ensure that model could perform better, we could use image generator to mutiple data as to increase the probability.
+```
+from keras.preprocessing.image import ImageDataGenerator
+
+train_datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
+datagen = ImageDataGenerator(rescale=None)
+```
+Use flow() to takes data & label arrays, generates batches of augmented data as x is a list of numpy arrays and y is a numpy array of corresponding labels.
+```
+train_iterator = train_datagen.flow(x_train2, y_train2_arr_cat, batch_size=128)
+test_iterator = datagen.flow(x_test2, y_test2_arr_cat, batch_size=128)
+```
+Fit the model using fit_generator as we have data augmentation needs to be applied and keep verbose=2, so we still could see the progress of training manually.
+```
+vgg_model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list_vgg, verbose=2)
+```
+
+#### Visualize Images Augmentation
+
+```
+from numpy import expand_dims
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
+
+img = load_img('/content/drive/My Drive/Datasets/8863_idx5_x1201_y751_class1.png')
+data = img_to_array(img)
+samples = expand_dims(data, 0)
+it = train_datagen.flow(samples, batch_size=1)
+
+for i in range(9):
+	plt.subplot(330 + 1 + i)
+	batch = it.next()
+	image = batch[0].astype('uint8')
+	plt.imshow(image)
+
+plt.show()
+```
+Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Horizontal Flip.
+
+
+
+
+#### Visualisasi Tensorboard Epoch to Loss-Accuracy
+
+```
+%load_ext tensorboard
+```
+We could use feature tensorboard to visualize training process, so as it goes to training, we could see the progress of epoch to loss and accuracy.
+```
+%tensorboard --vgg_logdir logs-vgg-model
+```
+
+
+
+
+
+Prediction to validation data using the saved weight from last time. We could call it by code load_weights() and it's must noted that opt and loss must same as architecture CNN we used for training.
+```
+model_filename = "vgg-model-weights-improvement-the-best.h5"
+
+vgg_model.load_weights(model_filename)
+
+opt = SGD(lr=0.001, momentum = 0.9)
+vgg_model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+```
+
+To evaluate the model which one is good or not. We could use confusion matrix and classification report. 
+```
+from sklearn.metrics import confusion_matrix
+import numpy as np
+
+pred = vgg_model.predict(x_test2)
+prediction_result = np.argmax(pred, axis=1)
+confusion = confusion_matrix(y_test2_arr, prediction_result)
+
+from sklearn.metrics import classification_report
+report = classification_report(y_test2_arr, prediction_result)
+report
+```
+
+
+Confusion Matrix Visualization
+```
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(5,3))
+sns.set(font_scale=1.2)
+ax = sns.heatmap(confusion, annot=True, xticklabels=['Non-IDC', 'IDC'], yticklabels=['Non-IDC', 'IDC'], cbar=False, cmap='Blues', linewidths=1, linecolor='black', fmt='.0f')
+plt.yticks(rotation=0)
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+ax.xaxis.set_ticks_position('top')
+plt.title('Confusion Matrix') 
+plt.show()
+```
+
+#### Sequential 5 Layers Conv2D
+```
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.applications import vgg16
+from tensorflow.keras.layers import Dropout, Conv2D, MaxPooling2D, Dense, Flatten
+from tensorflow.keras.optimizers import SGD
+
+model = Sequential()
+
+model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding="same", input_shape=(50, 50, 3)))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(64, (3,3), kernel_initializer='he_uniform', padding="same", activation='relu'))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(128, (3,3), kernel_initializer='he_uniform', padding="same", activation='relu'))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(128, (3,3), kernel_initializer='he_uniform', padding="same", activation='relu'))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(256, (3,3), kernel_initializer='he_uniform', padding="same", activation='relu'))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Dropout(0.2))
+model.add(Flatten()) 
+
+model.add(Dense(128, activation='relu', kernel_initializer='he_uniform')) 
+model.add(Dense(2, activation='softmax'))
+
+opt = SGD(lr=0.001, momentum = 0.9)
+model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+
+model.summary()
+```
+
+
+####  Visualize Filters in Sequential 5 Layers Conv2D
+
+```
+filters, biases = model.layers[0].get_weights()
+f_min, f_max = filters.min(), filters.max()
+filters = (filters - f_min) / (f_max - f_min)
+n_filters, ix = 6, 1
+for i in range(n_filters):
+	f = filters[:, :, :, i]
+	for j in range(3):
+		ax = plt.subplot(n_filters, 3, ix)
+		ax.set_xticks([])
+		ax.set_yticks([])
+		plt.imshow(f[:, :, j], cmap='gray')
+		ix += 1
+
+plt.show()
+```
+
+Plot of the First 6 Filters From CNN With One Subplot per Channel.
+
+
+
+####  Visualize Feature Maps 
+
+```
+from keras.applications.vgg16 import preprocess_input
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
+from keras.models import Model
+from numpy import expand_dims
+
+model_baru = model
+model_baru = Model(inputs=model_baru.inputs, outputs=model_baru.layers[1].output)
+model_baru.summary()
+
+img = load_img('/content/drive/My Drive/Datasets/8863_idx5_x1201_y751_class1.png', target_size=(50, 50))
+img = img_to_array(img)
+img = expand_dims(img, axis=0)
+img = preprocess_input(img)
+feature_maps = model_baru.predict(img)
+
+square = 5
+ix = 1
+for _ in range(square):
+	for _ in range(square):
+		ax = plt.subplot(square, square, ix)
+		ax.set_xticks([])
+		ax.set_yticks([])
+		plt.imshow(feature_maps[0, :, :, ix-1], cmap='gray')
+		ix += 1
+plt.show()
+```
+Visualization of the Feature Maps Extracted From the First Convolutional Layer in CNN.
+
+
+
+
+#### Tensorboard Sequential 5 Layers Conv2D
 
 Using tf.keras.callbacks.ModelCheckpoint to save weight of the best validation accuracy. 
 ```
@@ -310,7 +519,7 @@ from tensorflow.keras.callbacks import TensorBoard
 import os
 import datetime
 
-logdir = os.path.join("logs", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+logdir = os.path.join("logs-deep-model", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 callbacks_list.append(TensorBoard(logdir, histogram_freq=1))
 ```
 To ensure that model could perform better, we could use image generator to mutiple data as to increase the probability.
@@ -327,44 +536,20 @@ test_iterator = datagen.flow(x_test2, y_test2_arr_cat, batch_size=128)
 ```
 Fit the model using fit_generator as we have data augmentation needs to be applied and keep verbose=2, so we still could see the progress of training manually.
 ```
-model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list, verbose=2)
-```
+model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), validation_data=test_iterator, validation_steps=len(test_iterator), epochs=25,  callbacks=callbacks_list, verbose=2)```
 
-#### Visualize Images Augmentation
-
-```
-from numpy import expand_dims
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
-
-img = load_img('/content/drive/My Drive/Datasets/8863_idx5_x1201_y751_class1.png')
-data = img_to_array(img)
-samples = expand_dims(data, 0)
-it = train_datagen.flow(samples, batch_size=1)
-for i in range(9):
-	plt.subplot(330 + 1 + i)
-	batch = it.next()
-	image = batch[0].astype('uint8')
-	plt.imshow(image)
-plt.show()
-```
-Plot of Augmented Generated With a Width Shift Range, Height Shift Range, Horizontal Flip.
-
-![image aug](https://user-images.githubusercontent.com/72731175/95769237-c360ad80-0ce1-11eb-924f-624d8e0da876.jpeg)
-
-
-#### Load extention tensorboard in jupyter notebook.
+#### Visualisasi Tensorboard Epoch to Loss-Accuracy
 
 ```
 %load_ext tensorboard
 ```
 We could use feature tensorboard to visualize training process, so as it goes to training, we could see the progress of epoch to loss and accuracy.
 ```
-%tensorboard --logdir logs
+%tensorboard  --logdir logs-deep-model
 ```
-![epoch acc](https://user-images.githubusercontent.com/72731175/95769680-74674800-0ce2-11eb-9b72-5b1e83a43b24.jpeg)
 
-![epoch loss](https://user-images.githubusercontent.com/72731175/95769911-c8722c80-0ce2-11eb-8002-3b6bc7844305.jpeg)
+
+
 
 
 Prediction to validation data using the saved weight from last time. We could call it by code load_weights() and it's must noted that opt and loss must same as architecture CNN we used for training.
@@ -390,7 +575,7 @@ from sklearn.metrics import classification_report
 report = classification_report(y_test2_arr, prediction_result)
 report
 ```
-![report](https://user-images.githubusercontent.com/72731175/95770203-41718400-0ce3-11eb-8b0a-5928262a9dc7.jpeg)
+
 
 Confusion Matrix Visualization
 ```
@@ -403,7 +588,8 @@ plt.yticks(rotation=0)
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
 ax.xaxis.set_ticks_position('top')
-plt.title('Confusion Matrix - Invasive Ductal Carcinoma (IDC)') #Harus di ubah judulnya wkwkkwk
+plt.title('Confusion Matrix') 
 plt.show()
 ```
-![confusion](https://user-images.githubusercontent.com/72731175/95770323-71208c00-0ce3-11eb-9795-0783fecbd2e2.jpeg)
+
+
