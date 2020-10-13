@@ -840,6 +840,6 @@ plt.show()
 
 ### Conclusion
 
-From this project, several things can be displayed including:
+From this project, several things that can be conclude:
 - The Invasive Ductal Carcinoma dataset has an unbalanced number of IDC (-) & IDC (+) data, so it is necessary to generalize the data for further processing.
 - The use of VGG16 in this dataset is not as good as the deep layer model because VGG16 is built with a large library data so that the learning process is not as good as the one from scratch.
