@@ -455,6 +455,108 @@ vgg_model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), val
 > Epoch 00025: val_accuracy did not improve from 0.78720
 > 704/704 - 114s - loss: 0.4587 - accuracy: 0.7951 - val_loss: 0.4642 - val_accuracy: 0.7850
 
+```
+Epoch 1/25
+
+Epoch 00001: val_accuracy improved from -inf to 0.75160, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 114s - loss: 0.5214 - accuracy: 0.7513 - val_loss: 0.5105 - val_accuracy: 0.7516
+Epoch 2/25
+
+Epoch 00002: val_accuracy improved from 0.75160 to 0.76650, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 113s - loss: 0.5048 - accuracy: 0.7648 - val_loss: 0.4983 - val_accuracy: 0.7665
+Epoch 3/25
+
+Epoch 00003: val_accuracy improved from 0.76650 to 0.76900, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 114s - loss: 0.4961 - accuracy: 0.7719 - val_loss: 0.4944 - val_accuracy: 0.7690
+Epoch 4/25
+
+Epoch 00004: val_accuracy improved from 0.76900 to 0.77060, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 115s - loss: 0.4916 - accuracy: 0.7749 - val_loss: 0.4914 - val_accuracy: 0.7706
+Epoch 5/25
+
+Epoch 00005: val_accuracy improved from 0.77060 to 0.77315, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 114s - loss: 0.4872 - accuracy: 0.7783 - val_loss: 0.4894 - val_accuracy: 0.7732
+Epoch 6/25
+
+Epoch 00006: val_accuracy improved from 0.77315 to 0.77540, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 113s - loss: 0.4854 - accuracy: 0.7797 - val_loss: 0.4835 - val_accuracy: 0.7754
+Epoch 7/25
+
+Epoch 00007: val_accuracy improved from 0.77540 to 0.77710, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 114s - loss: 0.4810 - accuracy: 0.7811 - val_loss: 0.4820 - val_accuracy: 0.7771
+Epoch 8/25
+
+Epoch 00008: val_accuracy did not improve from 0.77710
+704/704 - 115s - loss: 0.4786 - accuracy: 0.7839 - val_loss: 0.4810 - val_accuracy: 0.7753
+Epoch 9/25
+
+Epoch 00009: val_accuracy did not improve from 0.77710
+704/704 - 115s - loss: 0.4770 - accuracy: 0.7836 - val_loss: 0.4798 - val_accuracy: 0.7757
+Epoch 10/25
+
+Epoch 00010: val_accuracy improved from 0.77710 to 0.78140, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 113s - loss: 0.4757 - accuracy: 0.7842 - val_loss: 0.4750 - val_accuracy: 0.7814
+Epoch 11/25
+
+Epoch 00011: val_accuracy did not improve from 0.78140
+704/704 - 113s - loss: 0.4730 - accuracy: 0.7870 - val_loss: 0.4745 - val_accuracy: 0.7802
+Epoch 12/25
+
+Epoch 00012: val_accuracy improved from 0.78140 to 0.78345, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 114s - loss: 0.4719 - accuracy: 0.7876 - val_loss: 0.4723 - val_accuracy: 0.7835
+Epoch 13/25
+
+Epoch 00013: val_accuracy did not improve from 0.78345
+704/704 - 112s - loss: 0.4697 - accuracy: 0.7883 - val_loss: 0.4746 - val_accuracy: 0.7818
+Epoch 14/25
+
+Epoch 00014: val_accuracy did not improve from 0.78345
+704/704 - 111s - loss: 0.4682 - accuracy: 0.7886 - val_loss: 0.4726 - val_accuracy: 0.7821
+Epoch 15/25
+
+Epoch 00015: val_accuracy did not improve from 0.78345
+704/704 - 111s - loss: 0.4670 - accuracy: 0.7898 - val_loss: 0.4710 - val_accuracy: 0.7809
+Epoch 16/25
+
+Epoch 00016: val_accuracy improved from 0.78345 to 0.78420, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 114s - loss: 0.4654 - accuracy: 0.7906 - val_loss: 0.4680 - val_accuracy: 0.7842
+Epoch 17/25
+
+Epoch 00017: val_accuracy did not improve from 0.78420
+704/704 - 114s - loss: 0.4672 - accuracy: 0.7898 - val_loss: 0.4697 - val_accuracy: 0.7825
+Epoch 18/25
+
+Epoch 00018: val_accuracy improved from 0.78420 to 0.78655, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 113s - loss: 0.4645 - accuracy: 0.7916 - val_loss: 0.4669 - val_accuracy: 0.7865
+Epoch 19/25
+
+Epoch 00019: val_accuracy improved from 0.78655 to 0.78720, saving model to vgg-model-weights-improvement-the-best.h5
+704/704 - 113s - loss: 0.4626 - accuracy: 0.7932 - val_loss: 0.4644 - val_accuracy: 0.7872
+Epoch 20/25
+
+Epoch 00020: val_accuracy did not improve from 0.78720
+704/704 - 113s - loss: 0.4633 - accuracy: 0.7910 - val_loss: 0.4658 - val_accuracy: 0.7850
+Epoch 21/25
+
+Epoch 00021: val_accuracy did not improve from 0.78720
+704/704 - 113s - loss: 0.4613 - accuracy: 0.7931 - val_loss: 0.4675 - val_accuracy: 0.7846
+Epoch 22/25
+
+Epoch 00022: val_accuracy did not improve from 0.78720
+704/704 - 112s - loss: 0.4599 - accuracy: 0.7932 - val_loss: 0.4656 - val_accuracy: 0.7860
+Epoch 23/25
+
+Epoch 00023: val_accuracy did not improve from 0.78720
+704/704 - 114s - loss: 0.4609 - accuracy: 0.7933 - val_loss: 0.4635 - val_accuracy: 0.7854
+Epoch 24/25
+
+Epoch 00024: val_accuracy did not improve from 0.78720
+704/704 - 114s - loss: 0.4606 - accuracy: 0.7926 - val_loss: 0.4645 - val_accuracy: 0.7865
+Epoch 25/25
+
+Epoch 00025: val_accuracy did not improve from 0.78720
+704/704 - 114s - loss: 0.4587 - accuracy: 0.7951 - val_loss: 0.4642 - val_accuracy: 0.7850
+```
 
 #### Visualize Images Augmentation
 
