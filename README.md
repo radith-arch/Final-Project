@@ -156,7 +156,7 @@ def load_balanced_data(files, size, start_index):
                 count -= 1
     return np.stack(res), y
 ```
-Split data train again, and now after splitting, data train 0 : 1 = 45,000 : 45,000.
+Split the data train again, and now after splitting, data train 0 : 1 = 45,000 : 45,000.
 ```
 x_train2, y_train2 = load_balanced_data(all_image_path, 90000,0)
 ```
