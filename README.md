@@ -156,18 +156,18 @@ def load_balanced_data(files, size, start_index):
                 count -= 1
     return np.stack(res), y
 ```
-Split data train again, and now after splitting, data train 0 : data train 1 = 45,000 : 45,000.
+Split data train again, and now after splitting, data train 0 : 1 = 45,000 : 45,000.
 ```
 x_train2, y_train2 = load_balanced_data(all_image_path, 90000,0)
 ```
-Check data train distribution
+Check data train distribution.
 
 ```
 sns.countplot(y_train2)
 ```
 ![sns countplot(y_train2)](https://user-images.githubusercontent.com/72731175/95766178-16843180-0cdd-11eb-8f99-f42317d92fd1.jpeg)
 
-And for data test, after splitting, data test 0 : data test 1 = 10,000 : 10,000.
+And for data test, after splitting, data test 0 : 1 = 10,000 : 10,000.
 ```
 x_test2, y_test2 = load_balanced_data(all_image_path, 20000, 110000)
 ```
@@ -179,12 +179,12 @@ sns.countplot(y_test2)
 
 #### Feature Engineering
 
-Made label become numpy array with type uint8.
+Made the labels become numpy array with type uint8.
 ```
 y_train2_arr = np.array(y_train2).astype('uint8')
 y_test2_arr = np.array(y_test2).astype('uint8')
 ```
-After that encode label with tf.keras.utils.to_categorical.
+After that encode the labels with tf.keras.utils.to_categorical.
 ```
 from tensorflow.keras.utils import to_categorical
 
@@ -214,13 +214,13 @@ show_img(all_image_path)
 ```
 ![show_img(all_image_path)](https://user-images.githubusercontent.com/72731175/95767362-d58d1c80-0cde-11eb-9fa8-f41ed1343ac0.jpeg)
 
-Random Sample Images from IDC(+).
+Random Sample Images from IDC(-).
 ```
 show_img(nonIDC)
 ```
 ![show_img(IDC)](https://user-images.githubusercontent.com/72731175/95767394-e2117500-0cde-11eb-8204-25a3c5d8f9bf.jpeg)
 
-Random Sample Images from IDC(-).
+Random Sample Images from IDC(+).
 ```
 show_img(IDC)
 ```
