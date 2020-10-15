@@ -90,6 +90,9 @@ print("Jumlah Patient: ", len(patient))
 
 print("Total Gejala IDC(-) dan IDC(+) :", len(nonIDC)+len(IDC))
 ```
+![dataIDC+-](https://user-images.githubusercontent.com/72731175/96154824-6d864280-0f39-11eb-9480-c7ab68820656.jpeg)
+
+
 
 #### Split Train-Test Data
 
