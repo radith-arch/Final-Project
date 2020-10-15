@@ -55,7 +55,7 @@ zip_path = '/content/drive/My\ Drive/Datasets/Breast\ Histopathology\ Images.zip
 !rm /content/Breast\ Histopathology\ Images.zip
 ```
 
-Use glob() for input all of datas to 1 varibable.
+Use glob() for input all of datas to 1 variable.
 ```
 import numpy as np
 import os 
