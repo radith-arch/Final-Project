@@ -8,7 +8,7 @@
 	- [Inspiration](#inspiration)
 - [Preparation Dataset](#preparation-dataset)
 	- [Load Data](#load-data)
-	- [Split Train Test Data](split-train-test-data)
+	- [Split Train Test Data](#split-train-test-data)
 	- [Feature Engineering](#feature-engineering)
 - [Images Visualization](#images-visualization)
 - [Architecture Convolutional Neural Network (CNN)](#architecture-convolutional-neural-network-cnn)
